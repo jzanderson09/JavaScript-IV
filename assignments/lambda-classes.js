@@ -23,17 +23,34 @@ class Person {
         this.gender = props.gender;
     }
 
-    speak () {
+    speak() {
         console.log(`Hello my name is ${this.name}, I am from ${this.location}!`);
     }
 }
 
-const jake = new Person({
+class Instructor extends Person {
+    constructor(props) {
+        super(props);
+        this.specialty = props.specialty;
+        this.favLanguage = props.favLanguage;
+        this.catchPhrase = props.catchPhrase;
+    }
+
+    demo(subject) {
+        console.log(`Today we are learning about ${subject}!`);
+    }
+}
+
+const jake = new Instructor({
     name: 'Jake',
     age: 27,
     location: 'Spearfish, SD',
-    gender: 'male'
+    gender: 'male',
+    specialty: 'CSS',
+    favLanguage: 'Javascript',
+    catchPhrase: "If you are not living on the edge, you are taking up too much room!"
 });
 
 console.log(jake);
 jake.speak();
+jake.demo('Javascript Fundamentals');
