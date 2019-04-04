@@ -6,6 +6,8 @@ Three different types of People:
 3) Project Managers --> Extensions of Instructors
 */
 
+/*-------------Classes:---------------------------*/
+
 //(Person) base class:
 class Person {
     constructor(props) {
@@ -19,14 +21,6 @@ class Person {
         console.log(`Hello my name is ${this.name}, I am from ${this.location}!`);
     }
 }
-
-//person ex:
-const dude = new Person({
-    name: 'Dude',
-    age: 40,
-    location: 'Pomona, CA',
-    gender: 'male'
-});
 
 //(Instructor) child class:
 class Instructor extends Person {
@@ -42,20 +36,9 @@ class Instructor extends Person {
     }
 
     grade(student, subject) {
-        console.log(`${student.name} receives a perfect score on {subject}`);
+        console.log(`${student.name} receives a perfect score on ${subject}!`);
     }
 }
-
-//instructor ex:
-const kyle = new Instructor({
-    name: 'Kyle',
-    age: 28,
-    location: 'Spearfish, SD',
-    gender: 'male',
-    specialty: 'CSS',
-    favLanguage: 'Javascript',
-    catchPhrase: "If you are not living on the edge, you are taking up too much room!"
-});
 
 //(Student) child class:
 class Student extends Person {
@@ -67,8 +50,9 @@ class Student extends Person {
     }
 
     listsSubjects() {
-        this.favSubjects.forEach(arrItem => {
-            console.log(arrItem);
+        console.log(`${this.name}'s favorite subjects:`);
+        this.favSubjects.forEach(function(element) {
+            console.log(element);
         });
     }
 
@@ -80,20 +64,6 @@ class Student extends Person {
         console.log(`${this.name} has begun sprint challenge on ${subject}!`);
     }
 }
-
-//student ex:
-const danny = new Student({
-    name: 'Danny',
-    age: 29,
-    location: 'Spearfish, SD',
-    gender: 'male',
-    specialty: 'SQL',
-    favLanguage: 'Blockchain',
-    catchPhrase: "Pitter patter, let's get at 'er!",
-    previousBackground: 'HTML, CSS',
-    className: 'WEBPT5',
-    favSubjects: ['History', 'Computer Science', 'Music', 'Art']
-});
 
 //(ProjectManager) child class:
 class ProjectManager extends Instructor {
@@ -112,9 +82,31 @@ class ProjectManager extends Instructor {
     }
 }
 
-//ProjectManager ex:
+/*------------------------------------------------*/
 
-const cameron = new ProjectManager({
+/*---------Full Class Examples:-------------------*/
+
+//person ex:
+const dude = new Person({
+    name: 'Dude',
+    age: 40,
+    location: 'Pomona, CA',
+    gender: 'male'
+});
+
+//ProjectManager ex:
+const kyle = new ProjectManager({
+    name: 'Kyle',
+    age: 28,
+    location: 'Spearfish, SD',
+    gender: 'male',
+    specialty: 'CSS',
+    favLanguage: 'Javascript',
+    catchPhrase: "If you are not living on the edge, you are taking up too much room!"
+});
+
+//instructor ex:
+const cameron = new Instructor({
     name: 'Cameron',
     age: 31,
     location: 'Salt Lake City, UT',
@@ -127,8 +119,22 @@ const cameron = new ProjectManager({
 });
 
 //student ex:
+const danny = new Student({
+    name: 'Danny',
+    age: 29,
+    location: 'Spearfish, SD',
+    gender: 'male',
+    specialty: 'SQL',
+    favLanguage: 'Blockchain',
+    catchPhrase: "Pitter patter, let's get at 'er!",
+    previousBackground: 'HTML, CSS',
+    className: 'WEBPT5',
+    favSubjects: ['History', 'Computer Science', 'Python', 'Art']
+});
+
+//student ex:
 const roman = new Student({
-    name: 'Nicholas',
+    name: 'Roman',
     age: 27,
     location: 'Spearfish, SD',
     gender: 'male',
@@ -140,5 +146,20 @@ const roman = new Student({
     favSubjects: ['Music', 'P.E.', 'Geography']
 });
 
-cameron.standUp('FSW8');
-cameron.debugsCode(roman, 'Javascript Fundamentals');
+/*------------------------------------------------*/
+
+/*-----------------Output:------------------------*/
+
+dude.speak();
+cameron.demo('Blockchain Technology');
+cameron.grade(danny, danny.favSubjects[1]);
+danny.listsSubjects();
+roman.listsSubjects();
+danny.PRAssignment(danny.favSubjects[0]);
+roman.PRAssignment(roman.favSubjects[2]);
+danny.sprintChallenge(danny.favSubjects[3]);
+roman.sprintChallenge(roman.favSubjects[1]);
+kyle.standUp('FSW15');
+kyle.debugsCode(danny, danny.favSubjects[2]);
+
+/*------------------------------------------------*/
